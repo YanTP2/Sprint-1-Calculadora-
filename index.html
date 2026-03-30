@@ -1,8 +1,63 @@
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Calculator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="style.css" />
   </head>
+  <body>
+    <main class="scene">
+      <div class="shape shape-square left"></div>
+      <div class="shape shape-square right"></div>
+      <div class="shape shape-circle bottom-left"></div>
+      <div class="shape shape-circle bottom-right"></div>
+      <div class="dots dots-top" aria-hidden="true"></div>
+      <div class="dots dots-bottom" aria-hidden="true"></div>
+
+      <section class="calculator" aria-label="Calculator">
+        <div class="display">
+          <p class="expression" data-expression>0</p>
+          <h1 class="result" data-result>0</h1>
+        </div>
+
+        <div class="keypad">
+          <div class="indicator" aria-hidden="true"></div>
+
+          <button class="key key-light key-text" data-action="clear">C</button>
+          <button class="key key-light key-text" data-action="toggle-sign">+/-</button>
+          <button class="key key-light key-text" data-action="percent">%</button>
+          <button class="key key-operator" data-action="operator" data-value="/">&#247;</button>
+
+          <button class="key key-number" data-action="digit" data-value="7">7</button>
+          <button class="key key-number" data-action="digit" data-value="8">8</button>
+          <button class="key key-number" data-action="digit" data-value="9">9</button>
+          <button class="key key-operator" data-action="operator" data-value="*">&times;</button>
+
+          <button class="key key-number" data-action="digit" data-value="4">4</button>
+          <button class="key key-number" data-action="digit" data-value="5">5</button>
+          <button class="key key-number" data-action="digit" data-value="6">6</button>
+          <button class="key key-operator" data-action="operator" data-value="-">&minus;</button>
+
+          <button class="key key-number" data-action="digit" data-value="1">1</button>
+          <button class="key key-number" data-action="digit" data-value="2">2</button>
+          <button class="key key-number" data-action="digit" data-value="3">3</button>
+          <button class="key key-operator" data-action="operator" data-value="+">+</button>
+
+          <button class="key key-number key-zero" data-action="digit" data-value="0">0</button>
+          <button class="key key-light key-dot" data-action="decimal">.</button>
+          <button class="key key-equals" data-action="equals">=</button>
+        </div>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
