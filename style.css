@@ -1,0 +1,263 @@
+:root {
+  --bg: #eff1f7;
+  --panel: #f7f8fc;
+  --panel-soft: #f2f4fa;
+  --panel-dark: #181818;
+  --shadow-light: rgba(255, 255, 255, 0.95);
+  --shadow-dark: rgba(196, 205, 227, 0.58);
+  --text-muted: #8f99b6;
+  --text-dark: #22273a;
+  --operator: #7b6dff;
+  --accent: #5ed8cf;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Inter", sans-serif;
+  background:
+    radial-gradient(circle at top left, rgba(255, 255, 255, 0.95), transparent 35%),
+    radial-gradient(circle at bottom right, rgba(255, 255, 255, 0.75), transparent 40%),
+    var(--bg);
+  color: var(--text-dark);
+}
+
+button {
+  border: 0;
+  font: inherit;
+  cursor: pointer;
+}
+
+.scene {
+  position: relative;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  padding: 32px;
+}
+
+.shape,
+.dots {
+  position: absolute;
+  opacity: 0.9;
+  pointer-events: none;
+}
+
+.shape {
+  background: var(--panel-soft);
+  box-shadow:
+    -20px -20px 40px var(--shadow-light),
+    20px 20px 40px rgba(210, 218, 235, 0.65);
+}
+
+.shape-square {
+  width: 140px;
+  aspect-ratio: 1;
+  border-radius: 20px;
+}
+
+.shape-circle {
+  width: 160px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+}
+
+.left {
+  left: 9%;
+  top: 18%;
+}
+
+.right {
+  right: 10%;
+  top: 10%;
+}
+
+.bottom-left {
+  left: 8%;
+  bottom: -8%;
+  width: 245px;
+}
+
+.bottom-right {
+  right: 8%;
+  bottom: 10%;
+}
+
+.dots {
+  width: 92px;
+  height: 140px;
+  background-image: radial-gradient(circle, rgba(208, 214, 232, 0.9) 2px, transparent 2px);
+  background-size: 16px 16px;
+}
+
+.dots-top {
+  top: 10%;
+  left: calc(50% - 110px);
+}
+
+.dots-bottom {
+  bottom: 22%;
+  left: calc(50% + 120px);
+}
+
+.calculator {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 320px);
+  border-radius: 18px;
+  background: var(--panel);
+  box-shadow:
+    -18px -18px 34px var(--shadow-light),
+    18px 18px 34px rgba(201, 209, 226, 0.8);
+}
+
+.display {
+  min-height: 230px;
+  border-radius: 18px 18px 0 0;
+  background: linear-gradient(135deg, #222 0%, #0f0f0f 100%);
+  padding: 34px 28px 22px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
+.expression {
+  min-height: 34px;
+  margin: 0 0 8px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #55617f;
+  letter-spacing: 0.02em;
+}
+
+.result {
+  margin: 0;
+  font-size: clamp(2.9rem, 5vw, 3.8rem);
+  line-height: 1;
+  font-weight: 800;
+  color: #f8fbff;
+}
+
+.keypad {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  padding: 14px 20px 20px;
+}
+
+.indicator {
+  grid-column: 1 / -1;
+  justify-self: center;
+  width: 76px;
+  height: 7px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #f9faff, #edf0f6);
+  box-shadow:
+    inset -2px -2px 3px rgba(255, 255, 255, 0.95),
+    inset 2px 2px 3px rgba(214, 220, 235, 0.95);
+  margin-bottom: 2px;
+}
+
+.key {
+  height: 48px;
+  border-radius: 13px;
+  display: grid;
+  place-items: center;
+  background: var(--panel-soft);
+  box-shadow:
+    -7px -7px 16px rgba(255, 255, 255, 0.95),
+    8px 8px 16px rgba(206, 213, 230, 0.78);
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+  user-select: none;
+}
+
+.key:active,
+.key.is-pressed {
+  transform: translateY(1px) scale(0.98);
+  box-shadow:
+    inset -4px -4px 10px rgba(255, 255, 255, 0.9),
+    inset 4px 4px 10px rgba(206, 213, 230, 0.9);
+}
+
+.key-number {
+  color: #7f93c5;
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.key-light {
+  color: #a0a4af;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.key-operator {
+  color: var(--operator);
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+.key-equals {
+  background: var(--accent);
+  color: #f8ffff;
+  font-size: 1.45rem;
+  font-weight: 800;
+  box-shadow:
+    -7px -7px 16px rgba(255, 255, 255, 0.85),
+    10px 10px 18px rgba(82, 200, 191, 0.45);
+}
+
+.key-equals:active,
+.key-equals.is-pressed {
+  box-shadow:
+    inset -4px -4px 10px rgba(255, 255, 255, 0.25),
+    inset 4px 4px 10px rgba(45, 162, 153, 0.4);
+}
+
+.key-zero {
+  grid-column: span 2;
+}
+
+.key-dot {
+  font-size: 1.5rem;
+  color: #3b3b3b;
+}
+
+@media (max-width: 640px) {
+  .scene {
+    padding: 20px;
+  }
+
+  .shape-square {
+    width: 96px;
+  }
+
+  .bottom-left {
+    width: 180px;
+  }
+
+  .shape-circle {
+    width: 120px;
+  }
+
+  .left,
+  .dots-top {
+    left: -10px;
+  }
+
+  .right,
+  .dots-bottom {
+    right: -10px;
+    left: auto;
+  }
+
+  .calculator {
+    width: min(100%, 340px);
+  }
+}
